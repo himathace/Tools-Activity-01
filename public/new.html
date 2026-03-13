@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hello!</title>
+</head>
+<body>
+  <div>
+    <p id="greeting">Loading...</p>
+    <a href="/">Go back</a>
+  </div>
+
+  <script>
+    fetch('/greet')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('greeting').textContent = data.name ? `Hello, ${data.name}!` : 'Hello, Stranger!';
+      })
+      .catch(() => {
+        document.getElementById('greeting').textContent = 'Something went wrong.';
+      });
+  </script>
+</body>
+</html>\

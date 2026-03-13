@@ -1,44 +1,26 @@
-const port = 3001
-
-const exp = require('express')
-const app = exp()
-
-app.use(exp.json())
-app.use(exp.urlencoded({ extended: true }))
-
-
-app.use(exp.static('public'))
+const port = 3001;
+const exp = require('express');
+const app = exp();
+const path = require('path');
+let storeName ="";
+app.use(exp.static('public'));
+app.use(exp.json());
+app.use(exp.urlencoded({ extended: true }));
 
 
-let submittedName = ''
-
-app.get('/api/v1', (req, res) => {
-  res.json({ message: "hello world " })
+app.post('/greet',(req,res) =>{
+    storeName = req.body.name;
+    res.redirect('/new.html');
 })
 
-
-app.post('/submit-name', (req, res) => {
-  submittedName = req.body.username || ''
-  res.redirect('/welcome')
+app.get('/public/new.html', (req, res) => {
+    res.redirect('/new.html');
 })
 
-app.get('/welcome', (req, res) => {
-  res.send(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Welcome</title>
-    </head>
-    <body>
-      <h1>Hello, ${submittedName}</h1>
-      <a href="/">Go back</a>
-    </body>
-    </html>
-  `)
+app.get('/greet',(req,res)=>{
+   res.json({name:storeName})
 })
-
 app.listen(port, () => {
-  console.log('Server running on port' + port)
-})
+    console.log(`Server started at port: ${port}`);
+
+});

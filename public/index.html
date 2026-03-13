@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enter Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>  
 </head>
 <body>
-  <h1>Welcome</h1>
-  <h1>Pleasr Enter Your Name to recive greeting</h1>
+  <div>
+    <p>Welcome</p>
+    <p>Enter your name to receive a greeting.</p>
 
-  <form action="/submit-name" method="POST">
-    <label for="username">Name:</label>
-    <input id="username" name="username" type="text" required />
-    <button type="submit">Get Greeting</button>
-  </form>
+    <form action="/greet" method="POST">
+      <label>Your name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter your name"
+        required
+        autocomplete="off"
+      />
+      <button
+        type="submit"
+      >
+        Get greeting
+      </button>
+    </form>
+  </div>
 </body>
 </html>
