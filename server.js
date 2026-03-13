@@ -32,12 +32,13 @@ app.get('/welcome', (req, res) => {
       <title>Welcome</title>
     </head>
     <body>
-      <h1>Welcome, ${submittedName}</h1>
+      <h1>Hello, ${submittedName}</h1>
+      <a href="/">Go back</a>
     </body>
     </html>
   `)
 })
 
 app.listen(port, () => {
-  console.log('Server running on' + port)
+  console.log('Server running on port' + port)
 })
